@@ -1,12 +1,15 @@
 import { shade } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface FormProps {
+  hasError: boolean;
+}
 
 export const Title = styled.h1`
   font-size: 48px;
   color: #2c3a33;
   max-width: 450px;
   line-height: 56px;
-
   margin-top: 80px;
 `;
 
@@ -20,10 +23,9 @@ export const Logo = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   margin-top: 40px;
   max-width: 700px;
-
   display: flex;
 
   input {
@@ -34,8 +36,11 @@ export const Form = styled.form`
     border-radius: 5px;
     color: #2c3a33;
     border: 2px solid #fff;
-    border-right: 0;
-
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
     &::placeholder {
       color: #a8a8b3;
     }
@@ -47,7 +52,7 @@ export const Form = styled.form`
     background: #3eb64a;
     border: 0;
     border-radius: 50%;
-    margin-left: 3%;
+    margin-left: 5px;
     color: #fff;
     font-weight: bold;
     transition: 0.2s background-color;

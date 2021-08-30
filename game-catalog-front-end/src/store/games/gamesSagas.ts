@@ -22,8 +22,8 @@ function* fetchGamesSaga() {
   }
 }
 
-function* postsSaga() {
+function* gamesSaga() {
   yield all([takeLatest(gameTypes.FETCH_GAME_REQUEST, fetchGamesSaga)]);
 }
 
-export default postsSaga;
+export default gamesSaga;
