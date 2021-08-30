@@ -17,7 +17,6 @@ import java.time.LocalDate;
 public class Game {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
