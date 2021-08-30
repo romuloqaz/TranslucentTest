@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiChevronRight, FiCompass, FiPlus } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 
+import IGame from '../../models/IGame';
 import { fetchGamesRequest } from '../../store/games/gamesActions';
 import { RootState } from '../../store/rootReducer';
 import { Title, Form, Repositories, Logo } from './styles';
 
 const Catalog: React.FC = () => {
+  const [search, setSearch] = useState<string>('');
+  const [gameCatalog, setGameCatalog] = useState<IGame[]>([]);
   const dispatch = useDispatch();
   const { loading, games, error } = useSelector(
     (state: RootState) => state.games,
@@ -14,10 +17,35 @@ const Catalog: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchGamesRequest());
-    console.log('loading ======>', loading);
-    console.log('GAMES ======>', games);
-    console.log('error ======>', error);
   }, []);
+
+  useEffect(() => {
+    if (games) {
+      setGameCatalog(games);
+      console.log('loading ======>', loading);
+      console.log('GAMES ======>', games);
+      console.log('error ======>', error);
+      console.log('CATALOG +++>', gameCatalog);
+    }
+  }, [games]);
+
+  const searchFilterFunction = (text: string) => {
+    if (text) {
+      const searchText = games.filter((game) => {
+        const itemData = game.title
+          ? game.title.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setGameCatalog(searchText);
+      setSearch(text);
+    } else {
+      setGameCatalog(games);
+      setSearch(text);
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -25,43 +53,34 @@ const Catalog: React.FC = () => {
       ) : (
         <div>
           <Logo>
-            <FiCompass size={60} />
-            <h1>Game_CatalogTC</h1>
+            <FiCompass size={50} />
+            <h2>Game_CatalogTC</h2>
           </Logo>
           <Title>Explore a Games Catalog</Title>
-          <Form action="">
-            <input placeholder="Enter the game name" />
+          <Form>
+            <input
+              value={search}
+              onChange={(e) => searchFilterFunction(e.target.value)}
+              placeholder="Enter the game name"
+            />
             <button type="submit">
               <FiPlus size={40} />
             </button>
           </Form>
           <Repositories>
-            <div>
-              <section>
-                <strong>metal gear</strong>
-                <p>2016</p>
-                <p>ps2</p>
-                <p>completed</p>
-                <p>88/08/2021</p>
-                <p>
-                  I really liked this game. A masterpiece from Kojima
-                  productions.
-                </p>
-              </section>
-              <FiChevronRight size={20} />
-            </div>
-
-            <div>
-              <section>
-                <strong>gran turismo</strong>
-                <p>2016</p>
-                <p>ps3</p>
-                <p>completed</p>
-                <p>88/08/2021</p>
-                <p>great game of racing</p>
-              </section>
-              <FiChevronRight size={20} />
-            </div>
+            {gameCatalog.map((game) => (
+              <div key={game.id}>
+                <section>
+                  <strong>{game.title}</strong>
+                  <p>{game.year}</p>
+                  <p>{game.console}</p>
+                  <p>{game.completed}</p>
+                  <p>{game.dateOfCompletion}</p>
+                  <p>{game.personalNotes}</p>
+                </section>
+                <FiChevronRight size={20} />
+              </div>
+            ))}
           </Repositories>
         </div>
       )}

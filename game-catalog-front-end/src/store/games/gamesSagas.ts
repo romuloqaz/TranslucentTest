@@ -18,7 +18,7 @@ function* fetchGamesSaga() {
     );
   } catch (error) {
     console.log('ERROR', error);
-    yield put(fetchGamesFailure(error));
+    yield put(fetchGamesFailure(error.message));
   }
 }
 

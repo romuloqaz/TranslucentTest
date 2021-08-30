@@ -12,11 +12,11 @@ export const Title = styled.h1`
 
 export const Logo = styled.div`
   display: flex;
-  margin-left: 5px;
 
-  h1 {
+  h2 {
     color: #2c3a33;
-    margin: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
   }
 `;
 
@@ -93,7 +93,7 @@ export const Repositories = styled.div`
     }
 
     strong {
-      font-size: 20px;
+      font-size: 24px;
       color: #3d3d4d;
     }
 
