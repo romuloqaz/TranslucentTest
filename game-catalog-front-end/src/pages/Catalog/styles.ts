@@ -18,8 +18,7 @@ export const Logo = styled.div`
 
   h2 {
     color: #2c3a33;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 10px;
   }
 `;
 

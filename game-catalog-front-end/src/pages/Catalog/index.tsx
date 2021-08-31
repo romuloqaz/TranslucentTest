@@ -76,8 +76,11 @@ const Catalog: React.FC = () => {
                   <strong>{game.title}</strong>
                   <p>{game.year}</p>
                   <p>{game.console}</p>
-                  <p>{game.completed}</p>
-                  <p>{game.dateOfCompletion}</p>
+                  {game.completed ? (
+                    <p>{game.dateOfCompletion}</p>
+                  ) : (
+                    <p>Not completed</p>
+                  )}
                   <p>{game.personalNotes}</p>
                 </section>
                 <FiChevronRight size={20} />

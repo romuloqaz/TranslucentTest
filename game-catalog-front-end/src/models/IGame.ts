@@ -4,6 +4,6 @@ export default interface IGame {
   year: number;
   console: string;
   completed: boolean;
-  dateOfCompletion: Date;
+  dateOfCompletion?: Date;
   personalNotes: string;
 }
