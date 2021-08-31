@@ -1,9 +1,9 @@
 package com.translucent.gamecatalog.model;
 
 import lombok.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -25,7 +25,8 @@ public class Game {
     private String title;
 
     @NotNull(message = "error.validation.year.not.null")
-    private String year;
+    @Min(value = 1970, message = "error.validation.year.min.value")
+    private Integer year;
 
     @NotNull(message = "error.validation.console.not.null")
     private String console;
