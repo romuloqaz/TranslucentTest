@@ -1,5 +1,5 @@
 export default interface IGame {
-  id: number;
+  id?: number;
   title: string;
   year: number;
   console: string;
