@@ -7,19 +7,18 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value="/games")
+@CrossOrigin(origins = "http://localhost:3000")
 public class GameController {
 
     @Autowired
@@ -32,7 +31,7 @@ public class GameController {
     @RequestMapping(method= RequestMethod.GET)
     public ResponseEntity<List<Game>>findAllGamesByDate() {
         List<Game> list = gameService.findAllOrderByDate();
-        return ResponseEntity.ok().headers(getHttpHeaders()).body(list);
+        return ResponseEntity.ok().body(list);
     }
 
     @ApiOperation("Creating a new game")
@@ -46,16 +45,6 @@ public class GameController {
             throw new ValidationException(errors.getAllErrors());
         }
         Game response = gameService.insert(obj);
-        return ResponseEntity.status(HttpStatus.CREATED).headers(getHttpHeaders()).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
-    @NotNull
-    private HttpHeaders getHttpHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
-        headers.add("Access-Control-Allow-Methods", "GET,POST");
-        headers.add("Access-Control-Allow-Headers", "Content-Type");
-        return headers;
-    }
-
 }

@@ -24,21 +24,21 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         List<String> errors = ex.getErrors().stream()
                 .map(ObjectError::getDefaultMessage).collect(Collectors.toList());
         Error error = createProblemBuilder(ValidationException.EXCEPTION_CODE, errors).build();
-        return handleExceptionInternal(ex, error, getHttpHeaders(), status, request);
+        return handleExceptionInternal(ex, error, new HttpHeaders(), status, request);
     }
 
     @ExceptionHandler(InvalidDateException.class)
     public ResponseEntity<Object> handleInvalidDateException(InvalidDateException ex, WebRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         Error error = createProblemBuilder(InvalidDateException.EXCEPTION_CODE, Collections.emptyList()).build();
-        return handleExceptionInternal(ex, error, getHttpHeaders(), status, request);
+        return handleExceptionInternal(ex, error, new HttpHeaders(), status, request);
     }
 
     @ExceptionHandler(GameNotCompletedException.class)
     public ResponseEntity<Object> handleGameNoteCompletedException(GameNotCompletedException ex, WebRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         Error error = createProblemBuilder(GameNotCompletedException.EXCEPTION_CODE, Collections.emptyList()).build();
-        return handleExceptionInternal(ex, error, getHttpHeaders(), status, request);
+        return handleExceptionInternal(ex, error, new HttpHeaders(), status, request);
     }
 
     @Override
@@ -62,14 +62,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .error(error)
                 .errors(errors);
-    }
-
-    private HttpHeaders getHttpHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
-        headers.add("Access-Control-Allow-Methods", "GET,POST");
-        headers.add("Access-Control-Allow-Headers", "Content-Type");
-        return headers;
     }
 
 }
