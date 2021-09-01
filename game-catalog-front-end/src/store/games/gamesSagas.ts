@@ -19,22 +19,24 @@ function* fetchGamesSaga() {
       }),
     );
   } catch (error) {
-    console.log('ERROR', error);
     yield put(fetchGamesFailure(error.message));
   }
 }
 
 function* addGamesSaga(game) {
   if (game) {
-    console.log('SAGA ==> ', game.payload);
     try {
+      const response: AxiosResponse = yield call(
+        api.post,
+        '/games',
+        game.payload,
+      );
       yield put(
         addGamesSuccess({
-          games: game.payload,
+          games: response.data,
         }),
       );
     } catch (error) {
-      console.log('ERROR', error);
       yield put(addGamesFailure(error.message));
     }
   }
