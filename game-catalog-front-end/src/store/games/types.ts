@@ -5,6 +5,7 @@ export interface GamesState {
   loading: boolean;
   games: IGame[];
   error: string | null;
+  loaded: boolean;
 }
 
 export interface FetchGamesSuccessPayload {
@@ -12,6 +13,14 @@ export interface FetchGamesSuccessPayload {
 }
 
 export interface FetchGamesFailurePayload {
+  error: string;
+}
+
+export interface AddGamesPayload {
+  games: IGame;
+}
+
+export interface AddGamesFailurePayload {
   error: string;
 }
 
@@ -29,7 +38,25 @@ export type FetchGamesFailure = {
   payload: FetchGamesFailurePayload;
 };
 
+export interface AddGamesRequest {
+  type: typeof gameTypes.ADD_GAME_REQUEST;
+  payload: AddGamesPayload;
+}
+
+export interface AddGamesRequestSuccess {
+  type: typeof gameTypes.ADD_GAME_REQUEST_SUCCESS;
+  payload: AddGamesPayload;
+}
+
+export interface AddGamesRequestFailure {
+  type: typeof gameTypes.ADD_GAME_REQUEST_FAILURE;
+  payload: AddGamesFailurePayload;
+}
+
 export type GamesActions =
   | FetchGamesRequest
   | FetchGamesSuccess
-  | FetchGamesFailure;
+  | FetchGamesFailure
+  | AddGamesRequest
+  | AddGamesRequestSuccess
+  | AddGamesRequestFailure;

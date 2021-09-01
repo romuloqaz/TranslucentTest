@@ -3,7 +3,7 @@ export default interface IGame {
   title: string;
   year: number;
   console: string;
-  completed: boolean;
+  completed?: boolean | false;
   dateOfCompletion?: Date;
   personalNotes: string;
 }

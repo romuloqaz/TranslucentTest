@@ -13,11 +13,17 @@ const Catalog: React.FC = () => {
   const [gameCatalog, setGameCatalog] = useState<IGame[]>([]);
   const [inputError, setInputError] = useState<string>('');
   const dispatch = useDispatch();
-  const { loading, games } = useSelector((state: RootState) => state.games);
+  const { loading, games, loaded } = useSelector(
+    (state: RootState) => state.games,
+  );
 
   useEffect(() => {
-    dispatch(fetchGamesRequest());
-  }, []);
+    if (!loaded) {
+      console.log('FOOOOOOI');
+
+      dispatch(fetchGamesRequest());
+    }
+  }, [loaded]);
 
   useEffect(() => {
     if (games) {
