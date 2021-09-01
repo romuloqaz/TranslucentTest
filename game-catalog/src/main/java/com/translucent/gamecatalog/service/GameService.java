@@ -20,7 +20,7 @@ public class GameService {
     public GameRepository gameRepository;
 
     public List<Game> findAllOrderByDate() {
-        return gameRepository.findAllByOrderByDateOfCompletionDesc();
+        return gameRepository.findAllByOrderByYearAsc();
     }
 
     @Transactional

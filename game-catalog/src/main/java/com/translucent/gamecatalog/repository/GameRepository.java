@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer> {
 
-    List<Game> findAllByOrderByDateOfCompletionDesc();
+    List<Game> findAllByOrderByYearAsc();
 }
