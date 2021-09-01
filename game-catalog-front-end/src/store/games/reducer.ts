@@ -28,7 +28,7 @@ export default (state = initialState, action: GamesActions) => {
         ...state,
         loading: false,
         games: [],
-        loaded: true,
+        loaded: false,
         error: action.payload.error,
       };
     case gameTypes.ADD_GAME_REQUEST:
@@ -37,7 +37,6 @@ export default (state = initialState, action: GamesActions) => {
         loading: true,
       };
     case gameTypes.ADD_GAME_REQUEST_SUCCESS:
-      console.log('AQUII success', state.games);
       return {
         ...state,
         loading: false,

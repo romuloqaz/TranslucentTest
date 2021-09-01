@@ -19,8 +19,6 @@ const Catalog: React.FC = () => {
 
   useEffect(() => {
     if (!loaded) {
-      console.log('FOOOOOOI');
-
       dispatch(fetchGamesRequest());
     }
   }, [loaded]);
@@ -49,6 +47,15 @@ const Catalog: React.FC = () => {
     });
     setGameCatalog(searchText);
     setSearchGame(text);
+  };
+
+  const yearFormat = (yearGame) => {
+    const currentYear: number = new Date().getFullYear();
+    const year = currentYear - yearGame;
+    if (year > 1) {
+      return `${year} years old`;
+    }
+    return `${year} year old`;
   };
 
   return (
@@ -80,7 +87,7 @@ const Catalog: React.FC = () => {
               <div key={game.id}>
                 <section>
                   <strong>{game.title}</strong>
-                  <p>{game.year}</p>
+                  <p>{yearFormat(game.year)}</p>
                   <p>{game.console}</p>
                   {game.completed ? (
                     <p>{game.dateOfCompletion}</p>

@@ -1,4 +1,3 @@
-import IGame from '../../models/IGame';
 import { gameTypes } from './gamesTypes';
 import {
   FetchGamesRequest,
