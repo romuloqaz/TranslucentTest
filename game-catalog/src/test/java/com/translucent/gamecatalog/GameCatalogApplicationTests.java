@@ -48,7 +48,6 @@ class GameCatalogApplicationTests {
 		request.setCompleted(false);
 		request.setPersonalNotes("I really liked this game. A masterpiece from Kojima productions");
 		mockMvc.perform(post(URL_GAMES)
-						.accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(asJsonString(request)))
 				.andExpect(status().isCreated())

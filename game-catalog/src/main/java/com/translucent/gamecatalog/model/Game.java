@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -20,15 +21,15 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "error.validation.title.not.null")
     @Size(max = 100, message = "error.validation.title.sizeTitle")
+    @NotEmpty(message = "error.validation.title.not.empty")
     private String title;
 
     @NotNull(message = "error.validation.year.not.null")
     @Min(value = 1970, message = "error.validation.year.min.value")
     private Integer year;
 
-    @NotNull(message = "error.validation.console.not.null")
+    @NotEmpty(message = "error.validation.console.not.empty")
     private String console;
 
     @NotNull(message = "error.validation.completed.not.null")
@@ -36,7 +37,7 @@ public class Game {
 
     private LocalDate dateOfCompletion;
 
-    @NotNull(message = "error.validation.personalNotes.not.null")
+    @NotEmpty(message = "error.validation.personalNotes.not.empty")
     private String personalNotes;
 
 }
