@@ -25,6 +25,11 @@ const Catalog: React.FC = () => {
 
   useEffect(() => {
     if (games) {
+      games.sort((gameA, gameB) => {
+        if (gameA.year < gameB.year) return -1;
+        if (gameA.year > gameB.year) return 1;
+        return 0;
+      });
       setGameCatalog(games);
     }
   }, [games]);
@@ -60,28 +65,28 @@ const Catalog: React.FC = () => {
 
   return (
     <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          <Logo>
-            <FiGrid size={50} />
-            <h2>Game_CatalogTC</h2>
-          </Logo>
-          <Title>Explore a Games Catalog</Title>
-          <Form hasError={!!inputError}>
-            <input
-              value={searchGame}
-              onChange={(e) => searchFilterFunction(e.target.value)}
-              placeholder="Enter the game name"
-            />
-            <Link to="repository">
-              <button type="submit">
-                <FiPlus size={40} />
-              </button>
-            </Link>
-          </Form>
-          {inputError && <Error>{inputError}</Error>}
+      <div>
+        <Logo>
+          <FiGrid size={50} />
+          <h2>Game_CatalogTC</h2>
+        </Logo>
+        <Title>Explore a Games Catalog</Title>
+        <Form hasError={!!inputError}>
+          <input
+            value={searchGame}
+            onChange={(e) => searchFilterFunction(e.target.value)}
+            placeholder="Enter the game name"
+          />
+          <Link to="repository">
+            <button type="submit">
+              <FiPlus size={40} />
+            </button>
+          </Link>
+        </Form>
+        {inputError && <Error>{inputError}</Error>}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
           <Repositories>
             {gameCatalog.map((game) => (
               <div key={game.id}>
@@ -92,7 +97,7 @@ const Catalog: React.FC = () => {
                   {game.completed ? (
                     <p>{game.dateOfCompletion}</p>
                   ) : (
-                    <p>Not completed</p>
+                    <p>Not finished yet</p>
                   )}
                   <p>{game.personalNotes}</p>
                 </section>
@@ -100,8 +105,8 @@ const Catalog: React.FC = () => {
               </div>
             ))}
           </Repositories>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

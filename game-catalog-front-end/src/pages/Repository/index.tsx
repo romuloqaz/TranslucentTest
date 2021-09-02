@@ -1,28 +1,16 @@
 import { Formik, Form, FormikHelpers, Field } from 'formik';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FiChevronLeft, FiGrid } from 'react-icons/fi';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import IGame from '../../models/IGame';
 import { addGamesRequest } from '../../store/games/gamesActions';
-import { RootState } from '../../store/rootReducer';
 import { Header, Logo, Container } from './styles';
 
 const Repository: React.FC = () => {
   const dispatch = useDispatch();
-
-  const { games } = useSelector((state: RootState) => state.games);
-
-  useEffect(() => {
-    if (games) {
-      games.sort((a, b) => {
-        if (a.year < b.year) return -1;
-        if (a.year > b.year) return 1;
-        return 0;
-      });
-    }
-  }, [games]);
+  const history = useHistory();
 
   return (
     <>
@@ -54,6 +42,7 @@ const Repository: React.FC = () => {
             jogo.completed = false;
             dispatch(addGamesRequest(jogo));
             setSubmitting(false);
+            history.push('/');
           }}
         >
           <Form>
