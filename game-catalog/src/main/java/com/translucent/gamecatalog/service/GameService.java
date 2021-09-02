@@ -36,9 +36,7 @@ public class GameService {
         Integer currentYear = Integer.valueOf(getYearFormat.format(date));
         if (game.getDateOfCompletion() != null && game.getDateOfCompletion().isAfter(LocalDate.now()) || game.getYear() > currentYear) {
             throw new InvalidDateException();
-        } else if (game.getCompleted() && game.getDateOfCompletion() == null) {
-            throw new InvalidDateException();
-        } else if (!game.getCompleted() && game.getDateOfCompletion() != null) {
+        } else if (!game.getCompleted() && game.getDateOfCompletion() != null || game.getCompleted() && game.getDateOfCompletion() == null) {
             throw new GameNotCompletedException();
         }
     }
