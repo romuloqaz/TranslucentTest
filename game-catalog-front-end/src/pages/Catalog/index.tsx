@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { FiChevronRight, FiGrid, FiPlus } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import IGame from '../../models/IGame';
 import { fetchGamesRequest } from '../../store/games/gamesActions';
 import { RootState } from '../../store/rootReducer';
 import { Title, Form, Repositories, Logo, Error } from './styles';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Catalog: React.FC = () => {
   const [searchTextGame, setSearchTextGame] = useState<string>('');
@@ -106,6 +108,7 @@ const Catalog: React.FC = () => {
             ))}
           </Repositories>
         )}
+        <ToastContainer autoClose={4000} />
       </div>
     </>
   );

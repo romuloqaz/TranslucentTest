@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { toast } from 'react-toastify';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import api from '../../services/api';
@@ -31,12 +32,15 @@ function* addGamesSaga(game) {
         '/games',
         game.payload,
       );
+      toast.success('Game inserted successfully!');
+
       yield put(
         addGamesSuccess({
           games: response.data,
         }),
       );
     } catch (error) {
+      toast.error('Failed to insert game');
       yield put(addGamesFailure(error.message));
     }
   }

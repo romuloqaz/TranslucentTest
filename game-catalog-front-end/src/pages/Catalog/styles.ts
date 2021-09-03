@@ -7,23 +7,21 @@ interface FormProps {
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: #2c3a33;
   max-width: 450px;
   line-height: 56px;
-  margin-top: 80px;
+  margin-top: 60px;
 `;
 
 export const Logo = styled.div`
   display: flex;
 
   h2 {
-    color: #2c3a33;
     margin: 10px;
   }
 `;
 
 export const Form = styled.form<FormProps>`
-  margin-top: 40px;
+  margin-top: 30px;
   max-width: 700px;
   display: flex;
 
@@ -33,12 +31,11 @@ export const Form = styled.form<FormProps>`
     padding: 0 24px;
     border: 0;
     border-radius: 5px;
-    color: #2c3a33;
     border: 2px solid #fff;
     ${(props) =>
       props.hasError &&
       css`
-        border-color: #c53030;
+        border-color: #f44336;
       `}
     &::placeholder {
       color: #a8a8b3;
@@ -48,7 +45,7 @@ export const Form = styled.form<FormProps>`
   button {
     width: 90px;
     height: 90px;
-    background: #3eb64a;
+    background: #07bc0c;
     border: 0;
     border-radius: 50%;
     margin-left: 5px;
@@ -63,12 +60,12 @@ export const Form = styled.form<FormProps>`
 
 export const Error = styled.span`
   display: block;
-  color: #c53030;
+  color: #f44336;
   margin-top: 8px;
 `;
 
 export const Repositories = styled.div`
-  margin-top: 80px;
+  margin-top: 30px;
   max-width: 700px;
 
   div {
@@ -98,7 +95,6 @@ export const Repositories = styled.div`
 
     strong {
       font-size: 24px;
-      color: #3d3d4d;
     }
 
     p {

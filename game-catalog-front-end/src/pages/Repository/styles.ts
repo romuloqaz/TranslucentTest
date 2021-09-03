@@ -13,6 +13,7 @@ export const Header = styled.header`
     text-decoration: none;
     color: #666;
     transition: color 0.2s;
+    font-size: 20px;
 
     &:hover {
       color: #3d3d4d;
@@ -28,7 +29,6 @@ export const Logo = styled.div`
   display: flex;
 
   h2 {
-    color: #2c3a33;
     margin: 10px;
   }
 `;
@@ -46,9 +46,8 @@ export const Container = styled.div`
     text-align: center;
 
     h1 {
-      margin: 26px 0;
+      margin: 50px 0;
       font-size: 40px;
-      color: #2c3a33;
       max-width: 450px;
       line-height: 56px;
     }
@@ -63,7 +62,7 @@ export const Container = styled.div`
     }
 
     button {
-      background: #3eb64a;
+      background: #07bc0c;
       border: 0;
       width: 80%;
       color: #fff;

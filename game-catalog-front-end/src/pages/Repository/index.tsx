@@ -9,11 +9,13 @@ import {
 } from '@material-ui/core';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useFormik } from 'formik';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiChevronLeft, FiGrid } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import * as yup from 'yup';
+import 'react-toastify/dist/ReactToastify.css';
 
 import IGame from '../../models/IGame';
 import { addGamesRequest } from '../../store/games/gamesActions';
@@ -23,6 +25,7 @@ const Repository: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [selectedDate, handleDateChange] = useState(new Date());
+  const currentDate = new Date();
 
   const formik = useFormik({
     initialValues: {
@@ -104,30 +107,6 @@ const Repository: React.FC = () => {
             error={formik.touched.year && Boolean(formik.errors.year)}
             helperText={formik.touched.year && formik.errors.year}
           />
-          <Grid container justifyContent="center">
-            <Typography variant="h6">
-              The inserted game has been finalized?
-            </Typography>
-            <Checkbox
-              name="completed"
-              value={formik.values.completed}
-              onChange={formik.handleChange}
-              color="primary"
-            />
-          </Grid>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker
-              format="yyyy/MM/dd"
-              minDate="1969-31-12"
-              maxDate="2021-09-03"
-              value={selectedDate}
-              onChange={handleDateChange}
-              fullWidth
-              name="dateOfCompletion"
-              label="Date of Completion"
-              disabled={!formik.values.completed}
-            />
-          </MuiPickersUtilsProvider>
           <TextField
             name="console"
             label="Console"
@@ -148,6 +127,30 @@ const Repository: React.FC = () => {
             <MenuItem value="XBOX SERIES">Xbox Series</MenuItem>
             <MenuItem value="PC">PC</MenuItem>
           </TextField>
+          <Grid container justifyContent="center">
+            <Typography variant="h6">
+              The inserted game has been finalized?
+            </Typography>
+            <Checkbox
+              name="completed"
+              value={formik.values.completed}
+              onChange={formik.handleChange}
+              color="primary"
+            />
+          </Grid>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              format="yyyy/MM/dd"
+              minDate="1969-31-12"
+              maxDate={currentDate}
+              value={selectedDate}
+              onChange={handleDateChange}
+              fullWidth
+              name="dateOfCompletion"
+              label="Date of Completion"
+              disabled={!formik.values.completed}
+            />
+          </MuiPickersUtilsProvider>
           <TextField
             fullWidth
             id="personalNotes"
@@ -169,6 +172,7 @@ const Repository: React.FC = () => {
           </Button>
         </form>
       </Container>
+      <ToastContainer autoClose={4000} />
     </>
   );
 };
