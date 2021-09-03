@@ -57,13 +57,13 @@ const Repository: React.FC = () => {
     }),
     onSubmit: (values) => {
       try {
-        const jogo: IGame = values;
-        jogo.dateOfCompletion = selectedDate;
-        if (!jogo.completed) {
-          jogo.dateOfCompletion = null;
+        const game: IGame = values;
+        game.dateOfCompletion = selectedDate;
+        if (!game.completed) {
+          game.dateOfCompletion = null;
         }
-        console.log(jogo);
-        dispatch(addGamesRequest(jogo));
+        console.log(game);
+        dispatch(addGamesRequest(game));
         history.push('/');
       } catch (err) {
         console.log('err');
@@ -84,7 +84,7 @@ const Repository: React.FC = () => {
         </Link>
       </Header>
       <Container>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} autoComplete="off">
           <h1>Insert a New Game</h1>
           <TextField
             fullWidth
