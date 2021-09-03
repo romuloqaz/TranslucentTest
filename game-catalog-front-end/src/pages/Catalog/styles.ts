@@ -27,7 +27,7 @@ export const Form = styled.form<FormProps>`
 
   input {
     flex: 1;
-    height: 80px;
+    height: 90px;
     padding: 0 24px;
     border: 0;
     border-radius: 5px;
@@ -44,10 +44,10 @@ export const Form = styled.form<FormProps>`
 
   button {
     width: 90px;
-    height: 90px;
+    height: 92px;
     background: #07bc0c;
     border: 0;
-    border-radius: 50%;
+    border-radius: 5px;
     margin-left: 5px;
     color: #fff;
     font-weight: bold;
@@ -56,6 +56,10 @@ export const Form = styled.form<FormProps>`
       background: ${shade(0.2, '#3EB64A')};
     }
   }
+`;
+
+export const Loading = styled.div`
+  max-width: 700px;
 `;
 
 export const Error = styled.span`

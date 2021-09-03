@@ -11,12 +11,12 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #666;
+    color: #696969;
     transition: color 0.2s;
     font-size: 20px;
 
     &:hover {
-      color: #3d3d4d;
+      color: #2e2e2e;
     }
 
     svg {

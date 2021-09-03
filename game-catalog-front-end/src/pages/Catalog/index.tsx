@@ -1,3 +1,4 @@
+import { LinearProgress } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { FiChevronRight, FiGrid, FiPlus } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import IGame from '../../models/IGame';
 import { fetchGamesRequest } from '../../store/games/gamesActions';
 import { RootState } from '../../store/rootReducer';
-import { Title, Form, Repositories, Logo, Error } from './styles';
+import { Title, Form, Repositories, Logo, Error, Loading } from './styles';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Catalog: React.FC = () => {
@@ -87,7 +88,9 @@ const Catalog: React.FC = () => {
         </Form>
         {inputError && <Error>{inputError}</Error>}
         {loading ? (
-          <div>Loading...</div>
+          <Loading>
+            <LinearProgress />
+          </Loading>
         ) : (
           <Repositories>
             {gameCatalog.map((game) => (

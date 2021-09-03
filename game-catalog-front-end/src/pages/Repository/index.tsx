@@ -10,7 +10,7 @@ import {
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { FiChevronLeft, FiGrid } from 'react-icons/fi';
+import { FiChevronLeft } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import IGame from '../../models/IGame';
 import { addGamesRequest } from '../../store/games/gamesActions';
-import { Header, Logo, Container } from './styles';
+import { Header, Container } from './styles';
 
 const Repository: React.FC = () => {
   const dispatch = useDispatch();
@@ -74,10 +74,6 @@ const Repository: React.FC = () => {
   return (
     <>
       <Header>
-        <Logo>
-          <FiGrid size={50} />
-          <h2>Game_CatalogTC</h2>
-        </Logo>
         <Link to="/">
           <FiChevronLeft size={16} />
           Back
