@@ -39,35 +39,33 @@ const Repository: React.FC = () => {
     validationSchema: yup.object().shape({
       title: yup
         .string()
-        .required('Title is Required')
-        .max(100, 'Maximum title length is 100 characters'),
+        .required('Insert the game title')
+        .max(100, 'Maximum title length is 100 characters.'),
       year: yup
         .number()
-        .required('Year of the game is Required')
+        .required('Insert the game year')
         .test(
           'len',
           'The year must be exactly 4 characters long.',
           (val) => Math.ceil(Math.log10(val + 1)) === 4,
         )
-        .min(1970)
-        .max(2021)
+        .min(1970, 'The year must be greater than or equal to 1970')
+        .max(
+          new Date().getFullYear(),
+          'The year must be less than or equal to the current year.',
+        )
         .typeError('Please, enter a valid date.'),
-      console: yup.string().required('Console of game is Required'),
-      personalNotes: yup.string().required('Personal Notes is Required.'),
+      console: yup.string().required('Insert the game Console'),
+      personalNotes: yup.string().required('Insert the Personal Notes.'),
     }),
     onSubmit: (values) => {
-      try {
-        const game: IGame = values;
-        game.dateOfCompletion = selectedDate;
-        if (!game.completed) {
-          game.dateOfCompletion = null;
-        }
-        console.log(game);
-        dispatch(addGamesRequest(game));
-        history.push('/');
-      } catch (err) {
-        console.log('err');
+      const game: IGame = values;
+      game.dateOfCompletion = selectedDate;
+      if (!game.completed) {
+        game.dateOfCompletion = null;
       }
+      dispatch(addGamesRequest(game));
+      history.push('/');
     },
   });
 
@@ -125,7 +123,7 @@ const Repository: React.FC = () => {
           </TextField>
           <Grid container justifyContent="center">
             <Typography variant="h6">
-              The inserted game has been finalized?
+              The inserted game has been finished?
             </Typography>
             <Checkbox
               name="completed"
@@ -137,7 +135,7 @@ const Repository: React.FC = () => {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker
               format="yyyy/MM/dd"
-              minDate="1969-31-12"
+              minDate="1970/01/01"
               maxDate={currentDate}
               value={selectedDate}
               onChange={handleDateChange}
@@ -168,7 +166,7 @@ const Repository: React.FC = () => {
           </Button>
         </form>
       </Container>
-      <ToastContainer autoClose={4000} />
+      <ToastContainer autoClose={3000} />
     </>
   );
 };

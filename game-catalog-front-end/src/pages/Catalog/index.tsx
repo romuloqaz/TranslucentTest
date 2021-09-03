@@ -111,7 +111,7 @@ const Catalog: React.FC = () => {
             ))}
           </Repositories>
         )}
-        <ToastContainer autoClose={4000} />
+        <ToastContainer autoClose={3000} />
       </div>
     </>
   );

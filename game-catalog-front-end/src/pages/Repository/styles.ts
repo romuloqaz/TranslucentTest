@@ -47,13 +47,14 @@ export const Container = styled.div`
 
     h1 {
       margin: 50px 0;
-      font-size: 40px;
+      font-size: 44px;
       max-width: 450px;
       line-height: 56px;
     }
 
     h6 {
       margin-top: 5px;
+      font-size: 20px;
     }
 
     div {
