@@ -6,6 +6,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+
   a {
     display: flex;
     align-items: center;
@@ -28,8 +29,7 @@ export const Logo = styled.div`
 
   h2 {
     color: #2c3a33;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 10px;
   }
 `;
 
@@ -41,37 +41,38 @@ export const Container = styled.div`
   width: 100%;
 
   form {
-    margin: 80px 0;
-    width: 380px;
+    margin-top: 80px 0;
+    width: 400px;
     text-align: center;
 
     h1 {
-      margin-bottom: 24px;
+      margin: 26px 0;
+      font-size: 40px;
+      color: #2c3a33;
+      max-width: 450px;
+      line-height: 56px;
+    }
+
+    h6 {
+      margin-top: 5px;
+    }
+
+    div {
+      margin-bottom: 15px;
+      align-items: flex-start;
     }
 
     button {
-      background: red;
-      height: 56px;
-      border-radius: 10px;
+      background: #3eb64a;
       border: 0;
-      padding: 0 16px;
-      width: 100%;
-      color: orange;
-      font-weight: 500;
-      margin-top: 26px;
+      width: 80%;
+      color: #fff;
+      height: 60px;
+      margin-top: 30px;
+      font-weight: bold;
       transition: 0.2s background-color;
       &:hover {
         background: ${shade(0.2, '#3EB64A')};
-      }
-    }
-
-    input {
-      width: 80%;
-      border-radius: 10px;
-      border: 2px solid #232129;
-      padding: 16px;
-      & + input {
-        margin-top: 20px;
       }
     }
   }

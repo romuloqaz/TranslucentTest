@@ -47,7 +47,7 @@ export default (state = initialState, action: GamesActions) => {
       return {
         ...state,
         loading: false,
-        games: [],
+        games: [...state.games],
         error: action.payload.error,
       };
     default:

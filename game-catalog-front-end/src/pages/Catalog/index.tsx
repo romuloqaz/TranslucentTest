@@ -9,7 +9,7 @@ import { RootState } from '../../store/rootReducer';
 import { Title, Form, Repositories, Logo, Error } from './styles';
 
 const Catalog: React.FC = () => {
-  const [searchGame, setSearchGame] = useState<string>('');
+  const [searchTextGame, setSearchTextGame] = useState<string>('');
   const [gameCatalog, setGameCatalog] = useState<IGame[]>([]);
   const [inputError, setInputError] = useState<string>('');
   const dispatch = useDispatch();
@@ -35,12 +35,12 @@ const Catalog: React.FC = () => {
   }, [games]);
 
   useEffect(() => {
-    if (gameCatalog.length === 0 && searchGame.length > 0) {
+    if (gameCatalog.length === 0 && searchTextGame.length > 0) {
       setInputError('No games were found :(');
     } else {
       setInputError('');
     }
-  }, [gameCatalog, searchGame]);
+  }, [gameCatalog, searchTextGame]);
 
   const searchFilterFunction = (text: string) => {
     const searchText: IGame[] = games.filter((game) => {
@@ -51,7 +51,7 @@ const Catalog: React.FC = () => {
       return itemData.indexOf(textData) > -1;
     });
     setGameCatalog(searchText);
-    setSearchGame(text);
+    setSearchTextGame(text);
   };
 
   const yearFormat = (yearGame) => {
@@ -73,8 +73,8 @@ const Catalog: React.FC = () => {
         <Title>Explore a Games Catalog</Title>
         <Form hasError={!!inputError}>
           <input
-            value={searchGame}
-            onChange={(e) => searchFilterFunction(e.target.value)}
+            value={searchTextGame}
+            onChange={(event) => searchFilterFunction(event.target.value)}
             placeholder="Enter the game name"
           />
           <Link to="repository">
@@ -95,7 +95,7 @@ const Catalog: React.FC = () => {
                   <p>{yearFormat(game.year)}</p>
                   <p>{game.console}</p>
                   {game.completed ? (
-                    <p>{game.dateOfCompletion}</p>
+                    <p>completed on {game.dateOfCompletion}</p>
                   ) : (
                     <p>Not finished yet</p>
                   )}
