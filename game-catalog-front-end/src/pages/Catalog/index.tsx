@@ -28,21 +28,17 @@ const Catalog: React.FC = () => {
     (state: RootState) => state.games,
   );
 
+  games.sort((gameA, gameB) => {
+    if (gameA.year < gameB.year) return -1;
+    if (gameA.year > gameB.year) return 1;
+    return 0;
+  });
+
   useEffect(() => {
     if (!loaded) {
       dispatch(fetchGamesRequest());
     }
   }, [loaded]);
-
-  useEffect(() => {
-    if (games) {
-      games.sort((gameA, gameB) => {
-        if (gameA.year < gameB.year) return -1;
-        if (gameA.year > gameB.year) return 1;
-        return 0;
-      });
-    }
-  }, [games]);
 
   useEffect(() => {
     if (gameCatalog.length === 0 && searchTextGame.length > 0) {
@@ -88,11 +84,11 @@ const Catalog: React.FC = () => {
           <input
             value={searchTextGame}
             onChange={(event) => searchFilter(event.target.value)}
-            placeholder="Enter the game name"
+            placeholder="Enter the game name..."
           />
           <Link to="repository">
             <button type="submit">
-              <FiPlus size={40} />
+              <FiPlus size={60} />
             </button>
           </Link>
         </Form>
@@ -102,7 +98,9 @@ const Catalog: React.FC = () => {
             <div>
               <FiChevronsDown size={30} />
               {gameCatalog.map((game) => (
-                <p key={game.id}>{game.title}</p>
+                <div key={game.id}>
+                  <p>{game.title}</p>
+                </div>
               ))}
             </div>
           </ListSearch>
@@ -116,7 +114,7 @@ const Catalog: React.FC = () => {
             {games.map((game) => (
               <div key={game.id}>
                 <section>
-                  <strong>{game.title}</strong>
+                  <h2>{game.title}</h2>
                   <p>{yearFormat(game.year)}</p>
                   <p>{game.console}</p>
                   {game.completed ? (

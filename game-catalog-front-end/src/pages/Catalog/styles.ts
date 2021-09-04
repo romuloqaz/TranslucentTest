@@ -93,19 +93,19 @@ export const Repositories = styled.div`
     }
 
     section {
-      margin: 0 16px;
+      margin: 20px 28px;
       flex: 1;
     }
 
-    strong {
-      font-size: 28px;
-      margin-bottom: 10px 0;
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
     p {
       font-size: 18px;
       color: #a8a8b3;
-      margin-top: 4px;
+      margin: 10px 0;
     }
 
     svg {
@@ -128,8 +128,12 @@ export const ListSearch = styled.div`
     p {
       font-size: 22px;
       color: #a8a8b3;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       margin-left: 35px;
+      transition: 0.2s color;
+      &:hover {
+        color: ${shade(0.3, '#a8a8b3')};
+      }
     }
     svg {
       margin-top: 10px;
