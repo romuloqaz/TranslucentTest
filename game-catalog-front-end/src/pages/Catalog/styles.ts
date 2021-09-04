@@ -98,7 +98,8 @@ export const Repositories = styled.div`
     }
 
     strong {
-      font-size: 24px;
+      font-size: 28px;
+      margin-bottom: 10px 0;
     }
 
     p {
@@ -110,6 +111,30 @@ export const Repositories = styled.div`
     svg {
       margin-left: auto;
       color: #cbcbd6;
+    }
+  }
+`;
+
+export const ListSearch = styled.div`
+  margin-top: 5px;
+  max-width: 700px;
+
+  div {
+    background: #fff;
+    border: 0;
+    border-radius: 5px;
+    border: 2px solid #fff;
+
+    p {
+      font-size: 22px;
+      color: #a8a8b3;
+      margin-bottom: 20px;
+      margin-left: 35px;
+    }
+    svg {
+      margin-top: 10px;
+      margin-left: 50%;
+      color: #a8a8b3;
     }
   }
 `;
