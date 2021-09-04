@@ -116,7 +116,7 @@ export const Repositories = styled.div`
 `;
 
 export const ListSearch = styled.div`
-  margin-top: 5px;
+  margin-top: 3px;
   max-width: 700px;
 
   div {
@@ -125,20 +125,23 @@ export const ListSearch = styled.div`
     border-radius: 5px;
     border: 2px solid #fff;
 
-    p {
+    button {
       font-size: 22px;
-      color: #a8a8b3;
+      color: #686868;
+      background: #fff;
+      border: 0;
       margin-bottom: 15px;
+      font-weight: bold;
       margin-left: 35px;
       transition: 0.2s color;
       &:hover {
-        color: ${shade(0.3, '#a8a8b3')};
+        color: ${shade(0.3, '#303030')};
       }
     }
     svg {
-      margin-top: 10px;
+      margin-top: 5px;
       margin-left: 50%;
-      color: #a8a8b3;
+      color: #686868;
     }
   }
 `;

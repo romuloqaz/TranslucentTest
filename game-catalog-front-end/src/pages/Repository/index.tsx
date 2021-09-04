@@ -135,7 +135,7 @@ const Repository: React.FC = () => {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker
               format="yyyy/MM/dd"
-              minDate="1970/01/01"
+              minDate={`${formik.values.year}/01/01`}
               maxDate={currentDate}
               value={selectedDate}
               onChange={handleDateChange}

@@ -32,7 +32,7 @@ function* addGamesSaga(game) {
         '/games',
         game.payload,
       );
-      toast.success('Game inserted successfully!');
+      toast.success('Game successfully inserted!');
 
       yield put(
         addGamesSuccess({
