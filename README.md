@@ -20,6 +20,8 @@ mvn test
 
 To start the application you must have <b>Maven</b> and <b>Docker</b> installed on your computer.
 
+The <b>node</b> version used in this project and for the creation of the docker container was version <b>12.22.1</b>. This is the version that should be used to build the project.
+
 After cloning this repository to run the application, it is first necessary to insert the following command to enter the application's backend folder:
 
 ```
@@ -30,7 +32,7 @@ Next you will need to run the server.sh file to initiate the docker images for t
 ```
 sh server.sh
 ```
-If necessary, enter your administrator password:
+If necessary enter your administrator password.
 
 Wait for the creation of the images created for the backend and the frontend. When the creation is finished, you can access the endpoints http://localhost:8080/games to view the games previously registered in the backend and http://localhost:3000/ to access the frontend application.
 

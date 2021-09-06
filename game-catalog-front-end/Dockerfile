@@ -1,4 +1,3 @@
-
 FROM node:12.22.1
 
 ENV DEV_DIR /usr/src/app
