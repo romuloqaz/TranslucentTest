@@ -22,8 +22,8 @@ public class GameCatalogApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Game game = new Game( null,"FIFA 22", 2011, "video game", true, LocalDate.now(), "great");
-		Game game1 = new Game(null, "the last of us", 2018, "video game1", true, LocalDate.now(), "great 1");
+		Game game = new Game( null,"Metal Gear Solid 2", 2001, "PS2", true, LocalDate.of(2017, 8 ,7), " I really liked this game. A masterpiece from Kojima productions.");
+		Game game1 = new Game(null, "Mario Kart 8", 2014, "NINTENDO SWITCH", false, null, "Excellent racing game");
 		gameRepository.saveAll(Arrays.asList(game, game1));
 	}
 }
