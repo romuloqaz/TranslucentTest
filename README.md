@@ -18,6 +18,8 @@ mvn test
 ```
 ## Instructions for running the application
 
+To start the application you must have <b>Maven</b> and <b>Docker</b> installed on your computer.
+
 After cloning this repository to run the application, it is first necessary to insert the following command to enter the application's backend folder:
 
 ```
