@@ -108,7 +108,7 @@ const Catalog: React.FC = () => {
           <FiGrid size={50} />
           <h2>Game_CatalogTC</h2>
         </Logo>
-        <Title>Explore a Games Catalog</Title>
+        <Title>Explore a Game Catalog</Title>
         <Form hasError={!!inputError}>
           <input
             value={searchTextGame}
@@ -157,7 +157,7 @@ const Catalog: React.FC = () => {
                   {game.completed ? (
                     <p>completed on {game.dateOfCompletion}</p>
                   ) : (
-                    <p>Not finished yet</p>
+                    <p>Not completed yet</p>
                   )}
                   <p>{game.personalNotes}</p>
                 </section>

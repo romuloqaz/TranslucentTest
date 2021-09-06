@@ -123,7 +123,7 @@ const Repository: React.FC = () => {
           </TextField>
           <Grid container justifyContent="center">
             <Typography variant="h6">
-              The inserted game has been finished?
+              The inserted game has been completed?
             </Typography>
             <Checkbox
               name="completed"
