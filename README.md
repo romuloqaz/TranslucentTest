@@ -8,37 +8,37 @@ The application prototype can be accessed using the address: https://www.figma.c
 
 For the frontend application, ReactJS was used using Typescript, Styled Components, and the UI material for component styling. Forms were validated using Yup and Formik libraries.
 
-The backend application was made with spring-boot and using the PostgreSQL database. The handling and customization of exceptions that can be generated in the application following the business rules were produced. The API was documented using the swagger.
+The backend application was made with spring-boot and using the PostgreSQL database. It was built a customization of exceptions that can be generated in the application following the business rules were produced. The API was documented using the swagger
 It can be used by http://localhost:8080/swagger-ui.html#/.
 
-* Backend application tests can be applied using the following command.
+* Backend application tests can be applied using the following command:
 
 ```
 mvn test
 ```
 ## Instructions for running the application
 
-After cloning this repository, to run the application, it is first necessary to run the command to enter the application's backend folder.
+After cloning this repository to run the application, it is first necessary to insert the following command to enter the application's backend folder:
 
 ```
 cd game-catalog 
 ```
-Next, you will need to run the server.sh file to initialize the dockers images for the frontend and backend.
+Next you will need to run the server.sh file to initiate the docker images for the frontend and backend:
 
 ```
 sh server.sh
 ```
-If necessary, enter your administrator password.
+If necessary, enter your administrator password:
 
-Wait for the creation of the images created for the backend and the front end. When the creation is finished, you can access the endpoints http://localhost:8080/games to view the games previously registered in the backend and http://localhost:3000/ to access the frontend application.
+Wait for the creation of the images created for the backend and the frontend. When the creation is finished, you can access the endpoints http://localhost:8080/games to view the games previously registered in the backend and http://localhost:3000/ to access the frontend application.
 
 ## Considerations
 
 * The frontend and backend application has been dockerized and can be run using docker-compose.
 
-* The frontend application is relatively responsive
+* The frontend application is relatively responsive.
 
-* Redux-saga was used to manage the application status
+* Redux-saga was used to manage the application status.
 
 * There is a search field for the game list.
 
