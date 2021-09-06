@@ -73,7 +73,7 @@ const Catalog: React.FC = () => {
     setSearchTextGame(text);
   };
 
-  const yearFormat = (yearGame: number) => {
+  const dateOfCompletionFormat = (yearGame: number) => {
     const currentYear: number = new Date().getFullYear();
     const year = currentYear - yearGame;
     if (year > 1) {
@@ -94,7 +94,7 @@ const Catalog: React.FC = () => {
     setSearchTextGame('');
   };
 
-  const updateGames = () => {
+  const updateListGames = () => {
     setGameCatalog(games);
     setSearchTextGame('');
     setHasGameSelected(false);
@@ -116,7 +116,7 @@ const Catalog: React.FC = () => {
             placeholder="Search"
           />
           {hasGameSelected ? (
-            <button type="button" onClick={() => updateGames()}>
+            <button type="button" onClick={() => updateListGames()}>
               <FiX size={50} />
             </button>
           ) : (
@@ -152,7 +152,7 @@ const Catalog: React.FC = () => {
               <div key={game.id}>
                 <section>
                   <h2>{game.title}</h2>
-                  <p>{yearFormat(game.year)}</p>
+                  <p>{dateOfCompletionFormat(game.year)}</p>
                   <p>{game.console}</p>
                   {game.completed ? (
                     <p>completed on {game.dateOfCompletion}</p>
